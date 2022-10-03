@@ -7,7 +7,9 @@ const Layout = () => {
   return (
     <>
       <Nav>
-        <SNavLink to="/">Home</SNavLink>
+        <SNavLink end to="/">
+          Home
+        </SNavLink>
         <SNavLink to="/movies">Movies</SNavLink>
       </Nav>
 

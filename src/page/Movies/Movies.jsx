@@ -28,11 +28,14 @@ const Movies = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
+    if (!query.trim()) return;
+
     const response = await fetchByQuery(query);
     setMovies(response);
     setSearchParams({ query });
     setQuery('');
   };
+
   const onChange = e => {
     setQuery(e.target.value);
   };
@@ -42,10 +45,11 @@ const Movies = () => {
       <FormDiv>
         <Form onSubmit={handleSubmit}>
           <Input type="text" value={query} onChange={onChange} />
+
           <Button type="submit">search</Button>
         </Form>
       </FormDiv>
-      {movies.length > 0 && (
+      {movies?.length > 0 && (
         <MovieList>
           {movies.map(({ id, title, poster }) => (
             <MovieItem key={id}>
