@@ -27,13 +27,16 @@ export const fetchTrending = async () => {
 export const fetchByQuery = async query => {
   return axios
     .get(`/search/movie?query=${query}`)
-    .then(({ data: { results } }) => {
-      results.map(({ id, title, poster_path: poster }) => ({
-        id,
-        title,
-        poster: poster ? IMG_URL + poster : noPoster,
-      }));
-    })
+    .then(
+      ({ data: { results } }) =>
+        results?.map(({ id, title, poster_path: poster }) => ({
+          id,
+          title,
+          poster: poster ? IMG_URL + poster : noPoster,
+        })) ?? []
+      
+  )
+   
     .catch(error => {
       console.log(error.message);
     });

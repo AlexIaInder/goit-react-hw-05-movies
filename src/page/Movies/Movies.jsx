@@ -49,7 +49,7 @@ const Movies = () => {
           <Button type="submit">search</Button>
         </Form>
       </FormDiv>
-      {movies?.length > 0 && (
+      {movies.length > 0 && (
         <MovieList>
           {movies.map(({ id, title, poster }) => (
             <MovieItem key={id}>
